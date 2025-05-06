@@ -1,5 +1,8 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+
+import React, { useEffect } from 'react';
+import { useLocation, Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const NotFound = () => {
   const location = useLocation();
@@ -12,14 +15,27 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Return to Home
-        </a>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <div className="flex-grow flex items-center justify-center bg-neutral-1 py-16">
+        <div className="text-center px-4">
+          <div className="mb-8">
+            <img
+              src="https://images.unsplash.com/photo-1556742393-d75f468bfcb0?auto=format&fit=crop&w=400&q=80"
+              alt="Spilled coffee cup"
+              className="w-64 h-64 object-cover rounded-full mx-auto shadow-lg"
+            />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-display font-bold text-primary mb-4">Oops! Page Not Found</h1>
+          <p className="text-xl text-neutral-9/70 mb-8 max-w-md mx-auto">
+            Looks like this brew doesn't exist. Let's get you back to our fresh roasts.
+          </p>
+          <Link to="/" className="btn-accent">
+            Return to Homepage
+          </Link>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 };
